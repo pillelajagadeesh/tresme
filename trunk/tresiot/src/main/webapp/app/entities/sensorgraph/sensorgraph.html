@@ -1,0 +1,161 @@
+
+<div class="col-md-12">
+	<ul class="nav nav-pills nav-justified">
+		<li ng-class="{active:isSet(1)}"><a href ng-click="setTab(1);"
+			data-toggle="tab">Sensor Bar Graph</a></li>
+		<li ng-class="{active:isSet(2)}"><a href ng-click="setTab(2);"
+			data-toggle="tab">Sensor Line Graph</a></li>
+
+	</ul>
+</div>
+
+<div ng-show="isSet(1)">
+	<div class="col-md-12">
+		<h1 class="text-center">Sensor Bar Graph</h1>
+
+		<form class="form-horizontal">
+
+			<div class="form-group">
+				<label class="col-md-3 control-label">Client Id</label> 
+				<div class="col-sm-3">
+				<select class="form-control" id="clientId"
+					name="clienId" ng-model="vm.barclientId"
+					ng-options="id for id in vm.clientIdList" required>
+				</select>
+				</div>
+				 <label class="col-md-2 control-label">Aplication Name</label> 
+				<div class="col-md-3">
+					<select class="form-control"
+					id="barapplicationId" name="barapplicationId" ng-model="vm.barapplicationId"
+					ng-options="application.id as application.name for application in vm.applicationList" required>
+				</select>
+				
+				</div> 
+			</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label">Sensor Name</label> 
+				<div class="col-sm-3">
+				<select class="form-control" id="barsensorId"
+					name="barsensorId" ng-model="vm.barsensorId"
+					ng-options="sensor.id as sensor.name for sensor in vm.sensorList" required>
+				</select>
+				</div>
+				 
+			</div>
+			<div class="col-sm-6 col-md-offset-3" >
+				<input type="submit" class="btn btn-primary" value="submit"
+					ng-click="vm.sensorbargraph()" />
+			</div>
+
+
+		</form>
+	</div>
+<div class="col-md-8 col-md-offset-3" id="bargraphmessage">
+<p class="text-danger">No sensor data available for the given input</p>
+</div>
+	<div class="row" id="bargraphdiv">
+     <div class="col-md-8 col-md-offset-3">
+		<div class="box box-solid">
+			<div class="box-header">
+				<h3 class="box-title">Sensor Bar Graph</h3>
+			</div>
+			<div class="box-body chart-responsive">
+				<div id="sensorbar" style=""></div>
+			</div>
+         </div>
+		</div>
+	</div>
+</div>
+
+
+<div ng-show="isSet(2)">
+	<div class="col-md-12">
+		<h1 class="text-center">Sensor Line Graph</h1>
+
+		<form class="form-horizontal">
+			<div class="form-group">
+
+				<label class="col-md-3 control-label">Application Name</label>
+				<div class="col-sm-3">
+					<select class="form-control" id="applicationName"
+						name="applicationName"
+						ng-options=" application.id as application.name for application in vm.applicationList"
+						ng-model="vm.lineapplicationId" required>
+					</select>
+				</div>
+				<label class="control-label col-md-2 mt-5">Client Id</label> 
+				<div class="col-sm-3">
+				<select class="form-control" id="lineclientId"
+					name="lineclienId" ng-model="vm.lineclientId"
+					ng-options="id for id in vm.clientIdList" required>
+				</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-3 control-label">Sensor Name</label> 
+				<div class="col-sm-3">
+				<select class="form-control" id="linesensorId"
+					name="linesensorId" ng-model="vm.linesensorId"
+					ng-options="sensor.id as sensor.name for sensor in vm.sensorList" required>
+				</select>
+				</div>
+				 
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-3 mt-5">From Date</label>
+				<div class="col-md-3">
+					<div class="input-group">
+						<input id="field_serviceDate" type="text"
+							class="input-sm form-control" name="fromDate"
+							ng-model="vm.fromDate" datetime-picker="dd/MM/yyyy"
+							is-open="vm.datePickerOpenStatus.fromDate" enable-time="false"
+							required /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default btn-sm"
+								ng-click="vm.openCalendar('fromDate')">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+				
+				<label class="control-label col-md-2 mt-5">To Date</label>
+				<div class="col-md-3">
+					<div class="input-group">
+						<input id="field_toDate" type="text" class="input-sm form-control"
+							name="toDate" ng-model="vm.toDate" datetime-picker="dd/MM/yyyy"
+							is-open="vm.datePickerOpenStatus.toDate" enable-time="false"
+							required /> <span class="input-group-btn">
+							<button type="button" class="btn btn-default btn-sm"
+								ng-click="vm.openCalendar('toDate')">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			
+	
+	<div class="col-sm-6 col-md-offset-3">
+		<input type="submit" class="btn btn-primary" value="submit"
+			ng-click="vm.sensorlinegraph()" />
+	</div>
+
+</form>
+</div>
+<div class="col-md-8 col-md-offset-3" id="linegraphmessage">
+<p class="text-danger">No sensor data available for the given input</p>
+</div>
+<div class="row" id="linegraphdiv">
+     <div class="col-md-8 col-md-offset-3">
+
+	<div class="box box-solid">
+		<div class="box-header">
+			<h3 class="box-title">Sensor Line Graph</h3>
+		</div>
+		<div class="box-body chart-responsive">
+			<div id="sensorline" style=""></div>
+		</div>
+</div>
+	</div>
+</div>
+</div>

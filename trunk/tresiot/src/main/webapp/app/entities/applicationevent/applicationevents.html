@@ -1,0 +1,168 @@
+<div class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-solid">
+				<div class="box-header">
+					<h3 class="box-title">Applicationevents</h3>
+					<div class="box-tools">
+						<button class="btn btn-primary" ui-sref="applicationevent.new">
+							<span class="glyphicon glyphicon-plus"></span> <span>
+								Create new Applicationevent </span>
+						</button>
+					</div>
+				</div>
+				<div class="box-body">
+					<jhi-alert></jhi-alert>
+					<div class="table-responsive">
+						<table class="jh-table table table-bordered">
+							<thead class="bg-default">
+								<tr jh-sort="vm.predicate" ascending="vm.reverse"
+									callback="vm.transition()">
+									<th jh-sort-by="id"><span>ID</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="name"><span>Name</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="description"><span>Description</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="applicationId"><span>Application</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr
+									ng-repeat="applicationevent in vm.applicationevents track by applicationevent.id">
+									<td><a
+										ui-sref="applicationevent-detail({id:applicationevent.id})">{{applicationevent.id}}</a></td>
+									<td>{{applicationevent.name}}</td>
+									<td>{{applicationevent.description}}</td>
+									<td><a
+										ui-sref="application-detail({id:applicationevent.applicationId})">{{applicationevent.applicationName}}</a>
+									</td>
+									<td class="text-right">
+										<div class="btn-group flex-btn-group-container">
+											<button type="submit"
+												ui-sref="applicationevent-detail({id:applicationevent.id})"
+												class="btn btn-info btn-sm">
+												<span class="glyphicon glyphicon-eye-open"></span> <span
+													class="hidden-xs hidden-sm"></span>
+											</button>
+											<button type="submit"
+												ui-sref="applicationevent.edit({id:applicationevent.id})"
+												class="btn btn-primary btn-sm">
+												<span class="glyphicon glyphicon-pencil"></span> <span
+													class="hidden-xs hidden-sm"></span>
+											</button>
+											<button type="submit"
+												ui-sref="applicationevent.delete({id:applicationevent.id})"
+												class="btn btn-danger btn-sm">
+												<span class="glyphicon glyphicon-remove-circle"></span> <span
+													class="hidden-xs hidden-sm"></span>
+											</button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="count-length">
+								<jhi-item-count page="vm.page" total="vm.queryCount"
+									items-per-page="vm.itemsPerPage"></jhi-item-count>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="pagination-list pull-right">
+								<uib-pagination class="pagination-sm"
+									total-items="vm.totalItems" items-per-page="vm.itemsPerPage"
+									ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- 
+<div>
+	<h2>Applicationevents</h2>
+	<jhi-alert></jhi-alert>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-4 no-padding-left">
+				<button class="btn btn-primary" ui-sref="applicationevent.new">
+					<span class="glyphicon glyphicon-plus"></span> <span> Create
+						new Applicationevent </span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="table-responsive">
+		<table class="jh-table table table-striped">
+			<thead>
+				<tr jh-sort="vm.predicate" ascending="vm.reverse"
+					callback="vm.transition()">
+					<th jh-sort-by="id"><span>ID</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="name"><span>Name</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="description"><span>Description</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="applicationId"><span>Application</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr
+					ng-repeat="applicationevent in vm.applicationevents track by applicationevent.id">
+					<td><a
+						ui-sref="applicationevent-detail({id:applicationevent.id})">{{applicationevent.id}}</a></td>
+					<td>{{applicationevent.name}}</td>
+					<td>{{applicationevent.description}}</td>
+					<td><a
+						ui-sref="application-detail({id:applicationevent.applicationId})">{{applicationevent.applicationId}}</a>
+					</td>
+					<td class="text-right">
+						<div class="btn-group flex-btn-group-container">
+							<button type="submit"
+								ui-sref="applicationevent-detail({id:applicationevent.id})"
+								class="btn btn-info btn-sm">
+								<span class="glyphicon glyphicon-eye-open"></span> <span
+									class="hidden-xs hidden-sm"></span>
+							</button>
+							<button type="submit"
+								ui-sref="applicationevent.edit({id:applicationevent.id})"
+								class="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-pencil"></span> <span
+									class="hidden-xs hidden-sm"></span>
+							</button>
+							<button type="submit"
+								ui-sref="applicationevent.delete({id:applicationevent.id})"
+								class="btn btn-danger btn-sm">
+								<span class="glyphicon glyphicon-remove-circle"></span> <span
+									class="hidden-xs hidden-sm"></span>
+							</button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<jhi-item-count page="vm.page" total="vm.queryCount"
+			items-per-page="vm.itemsPerPage"></jhi-item-count>
+		<uib-pagination class="pagination-sm" total-items="vm.totalItems"
+			items-per-page="vm.itemsPerPage" ng-model="vm.page"
+			ng-change="vm.transition()"></uib-pagination>
+	</div>
+</div>
+ -->

@@ -1,0 +1,70 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "application",
+            "otherEntityName": "application",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "applicationevent",
+            "otherEntityName": "applicationevent",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "applicationview",
+            "otherEntityName": "applicationview",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "clientid",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "1",
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "clientos",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "devicemake",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "appversion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sessionduration",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161221145614",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "tresiot_eventdata",
+    "pagination": "pagination"
+}

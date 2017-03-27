@@ -1,0 +1,207 @@
+<div class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-solid">
+				<div class="box-header">
+					<h3 class="box-title">Eventdata</h3>
+					<div class="box-tools">
+						<button class="btn btn-primary" ui-sref="eventdata.new">
+							<span class="glyphicon glyphicon-plus"></span> <span>
+								Create new Eventdata </span>
+						</button>
+					</div>
+				</div>
+				<div class="box-body">
+					<jhi-alert></jhi-alert>
+					<div class="table-responsive">
+						<table class="jh-table table table-bordered">
+							<thead class="bg-default">
+								<tr jh-sort="vm.predicate" ascending="vm.reverse"
+									callback="vm.transition()">
+									<th jh-sort-by="id"><span>ID</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="clientid"><span>Clientid</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="clientos"><span>Clientos</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="devicemake"><span>Devicemake</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="appversion"><span>Appversion</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="sessionduration"><span>Sessionduration</span>
+										<span class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="location"><span>Location</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="applicationId"><span>Application</span> <span
+										class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="applicationeventId"><span>Applicationevent</span>
+										<span class="glyphicon glyphicon-sort"></span></th>
+									<th jh-sort-by="applicationviewId"><span>Applicationview</span>
+										<span class="glyphicon glyphicon-sort"></span></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="eventdata in vm.eventdata track by eventdata.id">
+									<td><a ui-sref="eventdata-detail({id:eventdata.id})">{{eventdata.id}}</a></td>
+									<td>{{eventdata.clientid}}</td>
+									<td>{{eventdata.clientos}}</td>
+									<td>{{eventdata.devicemake}}</td>
+									<td>{{eventdata.appversion}}</td>
+									<td>{{eventdata.sessionduration}}</td>
+									<td>{{eventdata.location}}</td>
+									<td><a
+										ui-sref="application-detail({id:eventdata.applicationId})">{{eventdata.applicationName}}</a>
+									</td>
+									<td><a
+										ui-sref="applicationevent-detail({id:eventdata.applicationeventId})">{{eventdata.applicationeventName}}</a>
+									</td>
+									<td><a
+										ui-sref="applicationview-detail({id:eventdata.applicationviewId})">{{eventdata.applicationviewName}}</a>
+									</td>
+									<td class="text-right">
+										<div class="btn-group flex-btn-group-container">
+											<button type="submit"
+												ui-sref="eventdata-detail({id:eventdata.id})"
+												class="btn btn-info btn-sm">
+												<span class="glyphicon glyphicon-eye-open"></span> <span
+													class="hidden-xs hidden-sm"></span>
+											</button>
+											<button type="submit"
+												ui-sref="eventdata.edit({id:eventdata.id})"
+												class="btn btn-primary btn-sm">
+												<span class="glyphicon glyphicon-pencil"></span> <span
+													class="hidden-xs hidden-sm"></span>
+											</button>
+											<button type="submit"
+												ui-sref="eventdata.delete({id:eventdata.id})"
+												class="btn btn-danger btn-sm">
+												<span class="glyphicon glyphicon-remove-circle"></span> <span
+													class="hidden-xs hidden-sm"></span>
+											</button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="count-length">
+								<jhi-item-count page="vm.page" total="vm.queryCount"
+									items-per-page="vm.itemsPerPage"></jhi-item-count>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="pagination-list pull-right">
+								<uib-pagination class="pagination-sm"
+									total-items="vm.totalItems" items-per-page="vm.itemsPerPage"
+									ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!-- 
+<div>
+	<h2>Eventdata</h2>
+	<jhi-alert></jhi-alert>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-4 no-padding-left">
+				<button class="btn btn-primary" ui-sref="eventdata.new">
+					<span class="glyphicon glyphicon-plus"></span> <span> Create
+						new Eventdata </span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<br />
+	<div class="table-responsive">
+		<table class="jh-table table table-striped">
+			<thead>
+				<tr jh-sort="vm.predicate" ascending="vm.reverse"
+					callback="vm.transition()">
+					<th jh-sort-by="id"><span>ID</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="clientid"><span>Clientid</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="clientos"><span>Clientos</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="devicemake"><span>Devicemake</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="appversion"><span>Appversion</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="sessionduration"><span>Sessionduration</span>
+						<span class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="location"><span>Location</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="applicationId"><span>Application</span> <span
+						class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="applicationeventId"><span>Applicationevent</span>
+						<span class="glyphicon glyphicon-sort"></span></th>
+					<th jh-sort-by="applicationviewId"><span>Applicationview</span>
+						<span class="glyphicon glyphicon-sort"></span></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="eventdata in vm.eventdata track by eventdata.id">
+					<td><a ui-sref="eventdata-detail({id:eventdata.id})">{{eventdata.id}}</a></td>
+					<td>{{eventdata.clientid}}</td>
+					<td>{{eventdata.clientos}}</td>
+					<td>{{eventdata.devicemake}}</td>
+					<td>{{eventdata.appversion}}</td>
+					<td>{{eventdata.sessionduration}}</td>
+					<td>{{eventdata.location}}</td>
+					<td><a
+						ui-sref="application-detail({id:eventdata.applicationId})">{{eventdata.applicationId}}</a>
+					</td>
+					<td><a
+						ui-sref="applicationevent-detail({id:eventdata.applicationeventId})">{{eventdata.applicationeventId}}</a>
+					</td>
+					<td><a
+						ui-sref="applicationview-detail({id:eventdata.applicationviewId})">{{eventdata.applicationviewId}}</a>
+					</td>
+					<td class="text-right">
+						<div class="btn-group flex-btn-group-container">
+							<button type="submit"
+								ui-sref="eventdata-detail({id:eventdata.id})"
+								class="btn btn-info btn-sm">
+								<span class="glyphicon glyphicon-eye-open"></span> <span
+									class="hidden-xs hidden-sm"></span>
+							</button>
+							<button type="submit" ui-sref="eventdata.edit({id:eventdata.id})"
+								class="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-pencil"></span> <span
+									class="hidden-xs hidden-sm"></span>
+							</button>
+							<button type="submit"
+								ui-sref="eventdata.delete({id:eventdata.id})"
+								class="btn btn-danger btn-sm">
+								<span class="glyphicon glyphicon-remove-circle"></span> <span
+									class="hidden-xs hidden-sm"></span>
+							</button>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<jhi-item-count page="vm.page" total="vm.queryCount"
+			items-per-page="vm.itemsPerPage"></jhi-item-count>
+		<uib-pagination class="pagination-sm" total-items="vm.totalItems"
+			items-per-page="vm.itemsPerPage" ng-model="vm.page"
+			ng-change="vm.transition()"></uib-pagination>
+	</div>
+</div> -->

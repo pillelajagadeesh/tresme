@@ -1,0 +1,54 @@
+<div class="col-md-12">
+<h1 class="text-center">Event Bar Graph</h1>
+
+	<form class="form-horizontal">
+	<div class="form-group">
+		
+	<label class="col-md-3 control-label">Client Id</label>
+	<div class="col-sm-3">
+	<select class="form-control" id="clientId" name="clienId" ng-model="vm.clientId" ng-options="id for id in vm.clientIdList" required>
+    </select> 
+	</div>
+	 <label class="col-md-2 control-label">Aplication Name</label> 
+				<div class="col-md-3">
+					<select class="form-control"
+					id="eventapplicationId" name="eventapplicationId" ng-model="vm.eventapplicationId"
+					ng-options="application.id as application.name for application in vm.applicationList" required>
+				</select>
+				
+				</div> 
+	</div>
+	<div class="form-group">
+	<label class="col-md-3 control-label">Event Name</label> 
+				<div class="col-md-3">
+					<select class="form-control"
+					id="eventId" name="eventId" ng-model="vm.eventId"
+					ng-options="event.id as event.name for event in vm.eventList" required>
+				</select>
+				
+				</div> 
+	</div>
+	
+	<div class="col-sm-6 col-md-offset-3">
+	<input type="submit" class="btn btn-primary" value="Submit" ng-click="vm.eventbargraph()"/>
+	</div>
+		
+		
+	</form>
+</div>
+<div class="col-md-8 col-md-offset-3" id="eventgraphmessage">
+<p class="text-danger">No sensor data available for the given input</p>
+</div>
+<div class="row" id="eventgraphdiv">
+     <div class="col-md-8 col-md-offset-3">
+         
+          	<div class="box box-solid">
+				<div class="box-header">
+				  <h3 class="box-title">Event Bar Graph</h3>
+				</div>
+				<div class="box-body chart-responsive">
+				  <div id="eventbar" style="" ></div>
+				</div>
+           </div>
+			</div>
+        </div>	
